@@ -66,7 +66,6 @@ Animation anim2 = new Animation() {
 Animation anim3 = new Animation() {
     float rotation = 0.0f;
     public void run(PGraphics offscreen) {
-      fft.forward(in.mix);
       offscreen.beginDraw();
       offscreen.background(0, in.left.get(100)*255, 0);
       offscreen.stroke(0, 255, 0);
