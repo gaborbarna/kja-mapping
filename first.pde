@@ -35,6 +35,8 @@ Animation anim2 = new Animation() {
       offscreen.beginDraw();
       offscreen.background(255);
       offscreen.fill(0, 255, 0);
+      offscreen.translate(100, 100, 0);
+      offscreen.rotate(in.left.get(0), in.left.get(1), in.left.get(10), 0.0);
       offscreen.box(100);
       offscreen.endDraw();
     }
@@ -54,26 +56,17 @@ void setup() {
                            ks.createCornerPinSurface(200, 600, 20));
 
   animations = Arrays.asList(anim1, anim2);
-  
-  // We need an offscreen buffer to draw the surface we
-  // want projected
-  // note that we're matching the resolution of the
-  // CornerPinSurface.
-  // (The offscreen buffer can be P2D or P3D)
   offscreen = createGraphics(800, 600, P3D);
 }
 
 
 
 void draw() {
-
-  
-
   background(0);
  
-  // render the scene, transformed using the corner pin surface
+
   for (CornerPinSurface surface : surfaces) {
-    anim1.run(offscreen);
+    anim2.run(offscreen);
     surface.render(offscreen);
   }  
 }
