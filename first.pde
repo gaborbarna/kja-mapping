@@ -35,7 +35,7 @@ HashMap<Surface, Animation> anims;
 Animation anim1 = new Animation() {
     public void run(PGraphics offscreen) {
       offscreen.beginDraw();
-      offscreen.background(0, in.left.get(100)* 255, 0);
+      offscreen.background(0, 0, 0);
       offscreen.stroke(0, 255, 0);
       for(int i = 0; i < in.bufferSize() - 1; i++)
       {
@@ -51,13 +51,14 @@ Animation anim2 = new Animation() {
     float rotation = 0.0f;
     public void run(PGraphics offscreen) {
       offscreen.beginDraw();
-      offscreen.background(0, in.left.get(100)*255, 0);
+      offscreen.background(0, 0, 0);
       offscreen.fill(0, 255, 0);
       offscreen.stroke(0, 0, 0);
-      offscreen.translate(100, 100, 0);
+      offscreen.translate(offscreen.width/2, offscreen.height/2, 0);
+      offscreen.scale(3, 3, 3);
       rotation += 0.1f;
       offscreen.rotate(rotation, rotation, rotation, fft.getBand(2));
-      offscreen.box(100);
+      offscreen.sphere(50);
       offscreen.endDraw();
     }
   };
@@ -67,7 +68,7 @@ Animation anim3 = new Animation() {
     float rotation = 0.0f;
     public void run(PGraphics offscreen) {
       offscreen.beginDraw();
-      offscreen.background(0, in.left.get(100)*255, 0);
+      offscreen.background(0, 0, 0);
       offscreen.stroke(0, 255, 0);
       for(int i = 0; i < fft.specSize(); i++)
       {
@@ -87,10 +88,9 @@ void setup() {
   ks = new Keystone(this);
 
   anims = new HashMap<Surface, Animation>();
-  anims.put(new Surface(0, 800, 300), anim1);
-  anims.put(new Surface(1, 200, 600), anim1);
-  anims.put(new Surface(2, 200, 600), anim2);
-  anims.put(new Surface(3, 200, 600), anim3);
+  anims.put(new Surface(0, 600, 700), anim2);
+  anims.put(new Surface(3, 1420, 700), anim2);
+  anims.put(new Surface(3, 700, 700), anim2);
 
 }
 
